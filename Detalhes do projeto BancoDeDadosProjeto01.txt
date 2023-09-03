@@ -1,0 +1,71 @@
+Criei as tabelas departamento e empregado:
+
+INSERT INTO departamento (NomeDepto, Gerente, Divisao, Local)
+VALUES
+    ('TI', 2, 'SUDOESTE', 'RIBEIRAO');
+    
+    
+    
+INSERT INTO empregado (NomeEmpregado, IdDepto, Cargo, Tempo_Emp, Salario, Comissao)
+VALUES 
+  ('Sophia', 20, 'GER', 6, CAST(15000.00 AS Decimal(10, 2)), ULL);
+ 
+
+
+
+Assim como demonstrado durante o desafio, realize a criação do Script SQL para criação do esquema do banco de dados. Posteriormente, realize a persistência de dados para realização de testes. Especifique ainda queries mais complexas dos que apresentadas durante a explicação do desafio. Sendo assim, crie queries SQL com as cláusulas abaixo:
+
+1. Recuperações simples com SELECT Statement
+2. Filtros com WHERE Statement
+3. Crie expressões para gerar atributos derivados
+4. Defina ordenações dos dados com ORDER BY
+5. Condições de filtros aos grupos – HAVING Statement
+6. Crie junções entre tabelas para fornecer uma perspectiva mais complexa dos dados
+
+
+
+1. Recuperações simples com SELECT:
+Para recuperar todos os dados de uma tabela, utilisei o comando SELECT:
+SELECT * FROM departamento;
+SELECT * FROM empregado;
+
+
+2. Filtros com WHERE Statement:
+Utilisei o comando WHERE para filtrar os resultados com base em condições:
+SELECT * FROM empregado WHERE salario > 5500.00;
+
+
+3. Crie expressões para gerar atributos derivados:
+Criei uma consulta usando expressões:
+SELECT NomeEmpregado, salario, salario * 12 AS salario_anual FROM empregado;
+
+
+4. Defina ordenações dos dados com ORDER BY
+Ordene os resultados usando ORDER BY:
+SELECT * FROM empregado ORDER BY salario DESC;
+
+
+5. Condições de filtros aos grupos – HAVING Statement
+Use HAVING para aplicar condições a grupos após uma operação GROUP BY:
+SELECT idDepto, AVG(salario) AS media_salario FROM empregado
+GROUP BY idDepto
+HAVING AVG(salario) > 500.00;
+
+
+6. Crie junções entre tabelas para fornecer uma perspectiva mais complexa dos dados
+Você pode usar JOIN para combinar informações de diferentes tabelas:
+SELECT empregado.NomeEmpregado, empregado.salario, departamento.NomeDepto AS dept_nome
+FROM empregado
+INNER JOIN departamento ON empregado.idDepto = departamento.idDepto;
+
+
+
+
+
+
+
+
+
+
+
+
